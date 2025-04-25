@@ -29,8 +29,6 @@ Este projeto foi desenvolvido com o objetivo de aplicar conhecimentos práticos 
 - Backend estruturado em arquitetura monolítica
 - Utilização de HTTPS (em produção)
 - Baixa latência e boa performance
-- Código limpo, modular e versionado com Git
-
 ---
 
 ## 🧪 Tecnologias Utilizadas
@@ -116,7 +114,7 @@ cd client && npm run dev
 
 ## 📚 Observações
 
-Projeto desenvolvido com fins educacionais, como parte de um desafio prático de aplicação full stack. T
+Projeto desenvolvido com fins educacionais, como parte de um desafio prático de aplicação full stack.
 
 ## 📸 Screenshots
 
@@ -137,7 +135,6 @@ Projeto desenvolvido com fins educacionais, como parte de um desafio prático de
 
 ### Chat em Grupo
 ![group chat](assets/groupchat.jpg)
-
 ---
 
 ## 🌐 Link do Repositório
