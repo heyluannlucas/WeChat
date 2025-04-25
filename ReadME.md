@@ -103,8 +103,6 @@ cd client && npm run dev
 - Utilização completa de WebSockets via Socket.io
 - Experiência realista de mensageria
 - Estrutura de projeto limpa e de fácil compreensão
-- Base para futuras evoluções (teste, CI/CD, escalonamento)
-
 ---
 
 ## 👥 Autor
