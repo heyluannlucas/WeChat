@@ -1,15 +1,33 @@
-version: '3.8'
-
 services:
   mongo:
     image: mongo:latest
     container_name: mongo-chat-app
     environment:
       MONGO_INITDB_DATABASE: chat-app
-    ports:
-      - "27017:27017"
     volumes:
       - mongo-data:/data/db
+    networks:
+      - chat-net
+
+  server:
+    image: sanovis/wechat-server:3.0.1
+    container_name: chat-server
+    platform: linux/amd64
+    environment:
+      DATABASE_URL: mongodb://mongo:27017/chat-app
+      PORT: 3000
+      ORIGIN: http://localhost:5173
+      JWT_KEY: (*^*(&(*)^(&*^*&*@()&@!LNASLBKJASBN!123123123@#@@#)))
+    depends_on:
+      - mongo
+    ports:
+      - "3000:3000"
+    networks:
+      - chat-net
+    restart: always
 
 volumes:
   mongo-data:
+
+networks:
+  chat-net:
