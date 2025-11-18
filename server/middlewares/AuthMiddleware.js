@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
 
 export const verifyToken = (req, res, next) => {
+  console.log("AuthMiddleware: Verifying token", req.cookies.jwt);
   const token = req.cookies.jwt;
   if (!token) return res.status(401).send("You are not authenticated!");
   jwt.verify(token, process.env.JWT_KEY, async (err, payload) => {

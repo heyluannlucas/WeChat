@@ -14,7 +14,7 @@ services:
     container_name: chat-server
     platform: linux/amd64
     environment:
-      DATABASE_URL: mongodb://mongo:27017/chat-app
+      DATABSE_URL: mongodb://mongo:27017/chat-app
       PORT: 3000
       ORIGIN: http://localhost:5173
       JWT_KEY: (*^*(&(*)^(&*^*&*@()&@!LNASLBKJASBN!123123123@#@@#)))
