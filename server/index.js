@@ -35,7 +35,7 @@ app.use("/api/messages", messagesRoutes);
 app.use("/api/channel", channelRoutes);
 
 const server = app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
+  console.log(`Server is running at http://localhost:${port} com origin ${process.env.ORIGIN} e secure false`);
 });
 
 setupSocket(server);
