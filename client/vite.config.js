@@ -10,4 +10,20 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://56.124.101.130:3000',
+        changeOrigin: true,
+        secure: false,
+        cookieDomainRewrite: 'localhost',
+      },
+      '/socket.io': {
+        target: 'http://56.124.101.130:3000',
+        changeOrigin: true,
+        secure: false,
+        ws: true,
+      },
+    },
+  },
 });

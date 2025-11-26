@@ -4,6 +4,7 @@ import { HOST } from "./constants";
 
 const apiClient = axios.create({
   baseURL: HOST,
+  withCredentials: true,
 });
 
 apiClient.interceptors.request.use(
@@ -17,6 +18,7 @@ apiClient.interceptors.request.use(
     ) {
       config.headers.Authorization = `Bearer ${token}`;
     }
+    console.log("TOKE", config)
     return config;
   },
   (error) => {
