@@ -1,6 +1,6 @@
 import { SOCKET_HOST } from "@/lib/constants";
 import { useAppStore } from "@/store";
-import React, { createContext, useContext, useEffect, useRef } from "react";
+import { createContext, useContext, useEffect, useRef } from "react";
 import { io } from "socket.io-client";
 
 const SocketContext = createContext(null);
@@ -15,9 +15,10 @@ export const SocketProvider = ({ children }) => {
 
   useEffect(() => {
     if (userInfo) {
+      const token = localStorage.getItem("authToken");
       socket.current = io(SOCKET_HOST, {
-        withCredentials: true,
         query: { userId: userInfo.id },
+        auth: { token },
       });
       socket.current.on("connect", () => {
         console.log("Connected to socket server");
