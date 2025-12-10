@@ -13,13 +13,13 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://56.124.101.130:3000',
+        target: 'http://54.207.11.253:3000',
         changeOrigin: true,
         secure: false,
         cookieDomainRewrite: 'localhost',
       },
       '/socket.io': {
-        target: 'http://56.124.101.130:3000',
+        target: 'http://54.207.11.253:3000',
         changeOrigin: true,
         secure: false,
         ws: true,
