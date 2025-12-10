@@ -14,10 +14,18 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT;
 const databaseURL = process.env.DATABSE_URL;
+const allowedOrigins = process.env.ORIGIN.split(",");
 
 app.use(
   cors({
-    origin: process.env.ORIGIN ? process.env.ORIGIN.split(',') : [],
+    origin: (origin, callback) => {
+      console.log("CORS Origin:", origin);
+      console.log("Allowed Origins:", allowedOrigins);
+      if (!origin || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+      return callback(new Error("Not allowed by CORS"));
+    },
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     credentials: true,
   })
