@@ -10,7 +10,7 @@ services:
       - chat-net
 
   server:
-    image: sanovis/wechat-server:3.0.9
+    image: sanovis/wechat-server:3.1.0
     container_name: chat-server
     platform: linux/amd64
     environment:

@@ -24,6 +24,7 @@ app.use(
       if (!origin || allowedOrigins.includes(origin)) {
         return callback(null, true);
       }
+      console.log("Not allowed by CORS")
       return callback(new Error("Not allowed by CORS"));
     },
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
