@@ -16,7 +16,7 @@ services:
     environment:
       DATABSE_URL: mongodb://mongo:27017/chat-app
       PORT: 3000
-      ORIGIN: http://localhost:5173,http://wechat-react-app.s3-website-sa-east-1.amazonaws.com
+      ORIGIN: http://localhost:5173,http://18.231.217.214
       JWT_KEY: (*^*(&(*)^(&*^*&*@()&@!LNASLBKJASBN!123123123@#@@#)))
     depends_on:
       - mongo
