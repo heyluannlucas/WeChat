@@ -49,10 +49,10 @@ const Auth = () => {
       if (validateLogin()) {
         const response = await apiClient.post(
           LOGIN_ROUTE,
-          { email, password },
-          { withCredentials: true }
+          { email, password }
         );
         if (response.data.user.id) {
+          localStorage.setItem("authToken", response.data.token);
           setUserInfo(response.data.user);
           navigate(response.data.user.profileSetup ? "/chat" : "/profile");
         } else {
@@ -69,10 +69,10 @@ const Auth = () => {
       if (validateSignup()) {
         const response = await apiClient.post(
           SIGNUP_ROUTE,
-          { email, password },
-          { withCredentials: true }
+          { email, password }
         );
         if (response.status === 201) {
+          localStorage.setItem("authToken", response.data.token);
           setUserInfo(response.data.user);
           navigate("/profile");
         }
