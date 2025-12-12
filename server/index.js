@@ -14,10 +14,19 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT;
 const databaseURL = process.env.DATABSE_URL;
+const allowedOrigins = process.env.ORIGIN.split(",");
 
 app.use(
   cors({
-    origin: [process.env.ORIGIN],
+    origin: (origin, callback) => {
+      console.log("CORS Origin:", origin);
+      console.log("Allowed Origins:", allowedOrigins);
+      if (!origin || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+      console.log("Not allowed by CORS")
+      return callback(new Error("Not allowed by CORS"));
+    },
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     credentials: true,
   })
@@ -35,7 +44,7 @@ app.use("/api/messages", messagesRoutes);
 app.use("/api/channel", channelRoutes);
 
 const server = app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
+  console.log(`Server is running at http://localhost:${port} com origin ${process.env.ORIGIN} e secure false`);
 });
 
 setupSocket(server);

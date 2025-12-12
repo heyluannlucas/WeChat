@@ -10,13 +10,13 @@ services:
       - chat-net
 
   server:
-    image: sanovis/wechat-server:3.0.1
+    image: sanovis/wechat-server:3.1.3
     container_name: chat-server
     platform: linux/amd64
     environment:
-      DATABASE_URL: mongodb://mongo:27017/chat-app
+      DATABSE_URL: mongodb://mongo:27017/chat-app
       PORT: 3000
-      ORIGIN: http://localhost:5173
+      ORIGIN: http://localhost:5173,http://18.231.217.214:8080
       JWT_KEY: (*^*(&(*)^(&*^*&*@()&@!LNASLBKJASBN!123123123@#@@#)))
     depends_on:
       - mongo

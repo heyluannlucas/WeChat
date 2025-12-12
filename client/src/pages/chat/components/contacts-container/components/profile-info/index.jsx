@@ -18,12 +18,9 @@ const ProfileInfo = () => {
   const navigate = useNavigate();
   const logout = async () => {
     try {
-      const response = await apiClient.post(
-        LOGOUT_ROUTE,
-        {},
-        { withCredentials: true }
-      );
+      const response = await apiClient.post(LOGOUT_ROUTE);
       if (response.status === 200) {
+        localStorage.removeItem("authToken");
         navigate("/auth");
         setUserInfo(undefined);
       }
