@@ -1,5 +1,4 @@
 import axios from "axios";
-import Cookies from "js-cookie";
 import { HOST } from "./constants";
 
 const apiClient = axios.create({
@@ -8,13 +7,9 @@ const apiClient = axios.create({
 
 apiClient.interceptors.request.use(
   (config) => {
-    const token = Cookies.get("access-token");
+    const token = localStorage.getItem("authToken");
 
-    if (
-      token &&
-      !config.url.includes("/login") &&
-      !config.url.includes("/signup")
-    ) {
+    if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
